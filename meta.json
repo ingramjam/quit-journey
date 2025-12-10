@@ -1,0 +1,19 @@
+{
+  "label": "Quit Journey - Gamified Intake Form",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "A gamified 'Choose Your Own Adventure' vertical scroller intake form that guides users through a personalized quit journey.",
+  "host_template_types": ["PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [
+    "intake",
+    "form",
+    "gamification",
+    "interactive",
+    "quit journey"
+  ],
+  "is_available_for_new_content": true
+}

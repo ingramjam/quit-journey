@@ -1,0 +1,696 @@
+/**
+ * Quit Journey - Demo Styles
+ * Standalone version with embedded SVG avatars
+ */
+
+/* ===================================
+   RESET & BASE STYLES
+   =================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.quit-journey-container {
+  color: #333;
+  background: linear-gradient(to bottom, #f0f4f8 0%, #d9e7f1 100%);
+  overflow-x: hidden;
+}
+
+/* ===================================
+   SECTION LAYOUT
+   =================================== */
+.journey-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.section-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+/* ===================================
+   SECTION 1: AVATAR SELECTION
+   =================================== */
+#avatar-selection {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.journey-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.journey-subtitle {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0.9;
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.avatar-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  color: #333;
+}
+
+.avatar-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.avatar-card.selected {
+  border: 4px solid #ffd700;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+  transform: scale(1.05);
+}
+
+.avatar-image-wrapper {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-name {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #667eea;
+}
+
+.avatar-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* ===================================
+   SECTION 2: THE BACKPACK
+   =================================== */
+#backpack-selection {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.section-description {
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.product-btn {
+  background: white;
+  border: 3px solid transparent;
+  border-radius: 15px;
+  padding: 2rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.product-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.product-btn.selected {
+  border-color: #ffd700;
+  background: #fffdf0;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.product-icon {
+  font-size: 3rem;
+}
+
+.product-name {
+  font-size: 1.1rem;
+}
+
+.continue-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 1.5rem 4rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.continue-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.continue-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===================================
+   SECTION 3: THE JOURNEY (TIMELINE)
+   =================================== */
+.journey-path {
+  min-height: 300vh;
+  background: linear-gradient(to bottom, #d9e7f1 0%, #f0f4f8 50%, #e0f2f7 100%);
+  padding: 0;
+  display: block;
+}
+
+/* Sticky Avatar */
+.avatar-traveler {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 80px;
+  height: 80px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.avatar-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border: 4px solid white;
+  animation: pulse 2s ease-in-out infinite;
+  background: white;
+  overflow: hidden;
+}
+
+.avatar-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 0 rgba(102, 126, 234, 0.7);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 0 20px rgba(102, 126, 234, 0);
+  }
+}
+
+/* Vertical Path Line */
+.path-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Milestones Container */
+.milestones-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10vh 2rem;
+}
+
+.milestone {
+  margin-bottom: 30vh;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.milestone.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.milestone.hidden {
+  display: none;
+}
+
+.milestone-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 500px;
+  position: relative;
+}
+
+/* Alternating left and right */
+.milestone-left {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.milestone-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Connection dot */
+.milestone-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: #4A90E2;
+  border: 4px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+  transform: translateY(-50%);
+}
+
+.milestone-left .milestone-card::before {
+  right: -60px;
+}
+
+.milestone-right .milestone-card::before {
+  left: -60px;
+}
+
+.milestone-title {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  color: #667eea;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.milestone-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.milestone-option {
+  position: relative;
+  padding: 2rem 1.5rem;
+  border: 3px solid transparent;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  line-height: 1.3;
+}
+
+.milestone-option::before {
+  content: '→';
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  color: #667eea;
+}
+
+.milestone-option:hover {
+  border-color: #667eea;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.milestone-option:hover::before {
+  opacity: 1;
+  left: 15px;
+}
+
+.milestone-option.selected {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #ffd700;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+  transform: scale(1.05);
+}
+
+.milestone-option.selected::before {
+  content: '✓';
+  opacity: 1;
+  left: 15px;
+  color: #ffd700;
+  font-size: 1.8rem;
+}
+
+.milestone-option.selected::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 15px;
+  padding: 3px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Confirmation Popup */
+.confirmation-popup {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px) scale(0.8);
+  background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 30px rgba(86, 171, 47, 0.4);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1000;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.confirmation-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.confirmation-popup::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #a8e063;
+}
+
+/* ===================================
+   SECTION 4: THE DESTINATION
+   =================================== */
+#destination {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  min-height: 100vh;
+}
+
+.destination-visual {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.destination-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.destination-subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.journey-form {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4A90E2;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  margin-top: 1rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Demo Controls */
+.demo-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.demo-btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.demo-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+@media (max-width: 768px) {
+  .journey-title {
+    font-size: 2.5rem;
+  }
+  
+  .journey-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .avatar-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .milestone-card {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .milestone-left,
+  .milestone-right {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .milestone-left .milestone-card::before,
+  .milestone-right .milestone-card::before {
+    left: -30px;
+  }
+  
+  .destination-title {
+    font-size: 2.5rem;
+  }
+  
+  .journey-form {
+    padding: 2rem;
+  }
+
+  .demo-controls {
+    flex-direction: column;
+  }
+}
+
+/* ===================================
+   SMOOTH SCROLL BEHAVIOR
+   =================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===================================
+   ANIMATION UTILITIES
+   =================================== */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

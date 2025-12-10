@@ -1,0 +1,196 @@
+[
+  {
+    "id": "hero_title",
+    "name": "hero_title",
+    "label": "Hero Title",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Choose Your Guide"
+  },
+  {
+    "id": "hero_subtitle",
+    "name": "hero_subtitle",
+    "label": "Hero Subtitle",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Select an avatar to begin your quit journey"
+  },
+  {
+    "id": "avatar_1_image",
+    "name": "avatar_1_image",
+    "label": "Avatar 1 Image",
+    "required": false,
+    "locked": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Avatar 1"
+    }
+  },
+  {
+    "id": "avatar_1_name",
+    "name": "avatar_1_name",
+    "label": "Avatar 1 Name",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "The Explorer"
+  },
+  {
+    "id": "avatar_1_description",
+    "name": "avatar_1_description",
+    "label": "Avatar 1 Description",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Young professional ready for change"
+  },
+  {
+    "id": "avatar_2_image",
+    "name": "avatar_2_image",
+    "label": "Avatar 2 Image",
+    "required": false,
+    "locked": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Avatar 2"
+    }
+  },
+  {
+    "id": "avatar_2_name",
+    "name": "avatar_2_name",
+    "label": "Avatar 2 Name",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "The Warrior"
+  },
+  {
+    "id": "avatar_2_description",
+    "name": "avatar_2_description",
+    "label": "Avatar 2 Description",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Determined to break the cycle"
+  },
+  {
+    "id": "avatar_3_image",
+    "name": "avatar_3_image",
+    "label": "Avatar 3 Image",
+    "required": false,
+    "locked": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Avatar 3"
+    }
+  },
+  {
+    "id": "avatar_3_name",
+    "name": "avatar_3_name",
+    "label": "Avatar 3 Name",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "The Healer"
+  },
+  {
+    "id": "avatar_3_description",
+    "name": "avatar_3_description",
+    "label": "Avatar 3 Description",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Seeking health and wellness"
+  },
+  {
+    "id": "avatar_4_image",
+    "name": "avatar_4_image",
+    "label": "Avatar 4 Image",
+    "required": false,
+    "locked": false,
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Avatar 4"
+    }
+  },
+  {
+    "id": "avatar_4_name",
+    "name": "avatar_4_name",
+    "label": "Avatar 4 Name",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "The Sage"
+  },
+  {
+    "id": "avatar_4_description",
+    "name": "avatar_4_description",
+    "label": "Avatar 4 Description",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Experienced and ready to inspire others"
+  },
+  {
+    "id": "backpack_title",
+    "name": "backpack_title",
+    "label": "Backpack Section Title",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "What Are You Carrying?"
+  },
+  {
+    "id": "backpack_description",
+    "name": "backpack_description",
+    "label": "Backpack Section Description",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Select all the products you want to leave behind"
+  },
+  {
+    "id": "destination_title",
+    "name": "destination_title",
+    "label": "Destination Title",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "You've Reached the Summit!"
+  },
+  {
+    "id": "destination_subtitle",
+    "name": "destination_subtitle",
+    "label": "Destination Subtitle",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Complete your journey by sharing your contact information"
+  },
+  {
+    "id": "hubspot_form_id",
+    "name": "hubspot_form_id",
+    "label": "HubSpot Form ID (Optional)",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "help_text": "If you want to use an existing HubSpot form, enter the form ID here",
+    "default": ""
+  },
+  {
+    "id": "custom_css",
+    "name": "custom_css",
+    "label": "Custom CSS",
+    "required": false,
+    "locked": false,
+    "type": "textarea",
+    "help_text": "Add any custom CSS to override default styles",
+    "default": ""
+  }
+]

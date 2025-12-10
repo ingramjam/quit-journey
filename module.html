@@ -1,0 +1,263 @@
+<!-- 
+  Quit Journey - Gamified Intake Form Module
+  A Choose Your Own Adventure vertical scroller for HubSpot
+-->
+
+<div class="quit-journey-container" id="quitJourney">
+  
+  <!-- Section 1: Avatar Selection (The Start) -->
+  <section class="journey-section" id="avatar-selection" data-section="avatar">
+    <div class="section-content">
+      <h1 class="journey-title">{{ module.hero_title }}</h1>
+      <p class="journey-subtitle">{{ module.hero_subtitle }}</p>
+      
+      <div class="avatar-grid">
+        <!-- Avatar Card 1 -->
+        <div class="avatar-card" data-avatar-id="avatar-1" data-demographics='{"age": "18-25", "location": "Urban"}'>
+          <div class="avatar-image-wrapper">
+            {% if module.avatar_1_image.src %}
+              <img src="{{ module.avatar_1_image.src }}" alt="{{ module.avatar_1_image.alt }}" class="avatar-image">
+            {% else %}
+              <div class="avatar-placeholder">Avatar 1</div>
+            {% endif %}
+          </div>
+          <h3 class="avatar-name">{{ module.avatar_1_name }}</h3>
+          <p class="avatar-description">{{ module.avatar_1_description }}</p>
+        </div>
+
+        <!-- Avatar Card 2 -->
+        <div class="avatar-card" data-avatar-id="avatar-2" data-demographics='{"age": "26-35", "location": "Suburban"}'>
+          <div class="avatar-image-wrapper">
+            {% if module.avatar_2_image.src %}
+              <img src="{{ module.avatar_2_image.src }}" alt="{{ module.avatar_2_image.alt }}" class="avatar-image">
+            {% else %}
+              <div class="avatar-placeholder">Avatar 2</div>
+            {% endif %}
+          </div>
+          <h3 class="avatar-name">{{ module.avatar_2_name }}</h3>
+          <p class="avatar-description">{{ module.avatar_2_description }}</p>
+        </div>
+
+        <!-- Avatar Card 3 -->
+        <div class="avatar-card" data-avatar-id="avatar-3" data-demographics='{"age": "36-50", "location": "Rural"}'>
+          <div class="avatar-image-wrapper">
+            {% if module.avatar_3_image.src %}
+              <img src="{{ module.avatar_3_image.src }}" alt="{{ module.avatar_3_image.alt }}" class="avatar-image">
+            {% else %}
+              <div class="avatar-placeholder">Avatar 3</div>
+            {% endif %}
+          </div>
+          <h3 class="avatar-name">{{ module.avatar_3_name }}</h3>
+          <p class="avatar-description">{{ module.avatar_3_description }}</p>
+        </div>
+
+        <!-- Avatar Card 4 -->
+        <div class="avatar-card" data-avatar-id="avatar-4" data-demographics='{"age": "50+", "location": "Urban"}'>
+          <div class="avatar-image-wrapper">
+            {% if module.avatar_4_image.src %}
+              <img src="{{ module.avatar_4_image.src }}" alt="{{ module.avatar_4_image.alt }}" class="avatar-image">
+            {% else %}
+              <div class="avatar-placeholder">Avatar 4</div>
+            {% endif %}
+          </div>
+          <h3 class="avatar-name">{{ module.avatar_4_name }}</h3>
+          <p class="avatar-description">{{ module.avatar_4_description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: The Backpack (Product Selection) -->
+  <section class="journey-section" id="backpack-selection" data-section="backpack">
+    <div class="section-content">
+      <h2 class="section-title">{{ module.backpack_title }}</h2>
+      <p class="section-description">{{ module.backpack_description }}</p>
+      
+      <div class="product-grid">
+        <button class="product-btn" data-product="cigarettes">
+          <span class="product-icon">🚬</span>
+          <span class="product-name">Cigarettes</span>
+        </button>
+        
+        <button class="product-btn" data-product="vapes">
+          <span class="product-icon">💨</span>
+          <span class="product-name">Vapes</span>
+        </button>
+        
+        <button class="product-btn" data-product="marijuana">
+          <span class="product-icon">🌿</span>
+          <span class="product-name">Marijuana</span>
+        </button>
+        
+        <button class="product-btn" data-product="nicotine-pouches">
+          <span class="product-icon">📦</span>
+          <span class="product-name">Nicotine Pouches</span>
+        </button>
+      </div>
+      
+      <button class="continue-btn" id="continueJourney" disabled>
+        Continue Your Journey
+      </button>
+    </div>
+  </section>
+
+  <!-- Section 3: The Journey (Vertical Scroll Timeline) -->
+  <section class="journey-section journey-path" id="journey-timeline" data-section="journey">
+    
+    <!-- Sticky Avatar that "walks" down the path -->
+    <div class="avatar-traveler" id="avatarTraveler">
+      <div class="avatar-icon"></div>
+    </div>
+
+    <!-- Vertical Path SVG -->
+    <svg class="path-line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="50" y1="0" x2="50" y2="100" stroke="#4A90E2" stroke-width="2" stroke-dasharray="5,5"/>
+    </svg>
+
+    <div class="milestones-container">
+      
+      <!-- Milestone 1: Universal Question -->
+      <div class="milestone" data-milestone="1" data-required-products="">
+        <div class="milestone-card milestone-left">
+          <h3 class="milestone-title">How long have you been using?</h3>
+          <div class="milestone-options">
+            <button class="milestone-option" data-answer="less-than-1-year">Less than 1 year</button>
+            <button class="milestone-option" data-answer="1-5-years">1-5 years</button>
+            <button class="milestone-option" data-answer="5-10-years">5-10 years</button>
+            <button class="milestone-option" data-answer="10-plus-years">10+ years</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone 2: Conditional - Cigarettes -->
+      <div class="milestone" data-milestone="2" data-required-products="cigarettes">
+        <div class="milestone-card milestone-right">
+          <h3 class="milestone-title">How many cigarettes per day?</h3>
+          <div class="milestone-options">
+            <button class="milestone-option" data-answer="1-5">1-5 cigarettes</button>
+            <button class="milestone-option" data-answer="6-10">6-10 cigarettes</button>
+            <button class="milestone-option" data-answer="11-20">11-20 cigarettes</button>
+            <button class="milestone-option" data-answer="20-plus">20+ cigarettes</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone 3: Conditional - Vapes -->
+      <div class="milestone" data-milestone="3" data-required-products="vapes">
+        <div class="milestone-card milestone-left">
+          <h3 class="milestone-title">What type of vaping device do you use?</h3>
+          <div class="milestone-options">
+            <button class="milestone-option" data-answer="disposable">Disposable vapes</button>
+            <button class="milestone-option" data-answer="pod-system">Pod system</button>
+            <button class="milestone-option" data-answer="mod">Box mod</button>
+            <button class="milestone-option" data-answer="other">Other</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone 4: Conditional - Marijuana -->
+      <div class="milestone" data-milestone="4" data-required-products="marijuana">
+        <div class="milestone-card milestone-right">
+          <h3 class="milestone-title">How do you primarily consume marijuana?</h3>
+          <div class="milestone-options">
+            <button class="milestone-option" data-answer="smoking">Smoking</button>
+            <button class="milestone-option" data-answer="edibles">Edibles</button>
+            <button class="milestone-option" data-answer="vaping">Vaping</button>
+            <button class="milestone-option" data-answer="other">Other</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone 5: Conditional - Nicotine Pouches -->
+      <div class="milestone" data-milestone="5" data-required-products="nicotine-pouches">
+        <div class="milestone-card milestone-left">
+          <h3 class="milestone-title">How many pouches do you use per day?</h3>
+          <div class="milestone-options">
+            <button class="milestone-option" data-answer="1-5">1-5 pouches</button>
+            <button class="milestone-option" data-answer="6-10">6-10 pouches</button>
+            <button class="milestone-option" data-answer="11-15">11-15 pouches</button>
+            <button class="milestone-option" data-answer="15-plus">15+ pouches</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone 6: Universal Question -->
+      <div class="milestone" data-milestone="6" data-required-products="">
+        <div class="milestone-card milestone-right">
+          <h3 class="milestone-title">What's your main motivation to quit?</h3>
+          <div class="milestone-options">
+            <button class="milestone-option" data-answer="health">Health reasons</button>
+            <button class="milestone-option" data-answer="financial">Save money</button>
+            <button class="milestone-option" data-answer="family">Family/relationships</button>
+            <button class="milestone-option" data-answer="other">Other</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone 7: Universal Question -->
+      <div class="milestone" data-milestone="7" data-required-products="">
+        <div class="milestone-card milestone-left">
+          <h3 class="milestone-title">Have you tried to quit before?</h3>
+          <div class="milestone-options">
+            <button class="milestone-option" data-answer="never">Never tried</button>
+            <button class="milestone-option" data-answer="once">Once</button>
+            <button class="milestone-option" data-answer="few-times">A few times</button>
+            <button class="milestone-option" data-answer="many-times">Many times</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 4: The Destination (Form Submission) -->
+  <section class="journey-section" id="destination" data-section="destination">
+    <div class="section-content">
+      <div class="destination-visual">
+        <h2 class="destination-title">🏔️ {{ module.destination_title }}</h2>
+        <p class="destination-subtitle">{{ module.destination_subtitle }}</p>
+      </div>
+
+      <!-- Hidden inputs to capture game state -->
+      <form id="quitJourneyForm" class="journey-form">
+        <input type="hidden" name="avatar_selected" id="avatarField">
+        <input type="hidden" name="demographics" id="demographicsField">
+        <input type="hidden" name="products_selected" id="productsField">
+        <input type="hidden" name="journey_answers" id="answersField">
+        
+        <!-- Visible form fields for user details -->
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstname" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastname" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+
+        <button type="submit" class="submit-btn">Start Your Quit Journey</button>
+      </form>
+    </div>
+  </section>
+
+</div>
+
+<!-- Include the JavaScript module -->
+<script src="{{ get_asset_url('./module.js') }}"></script>
+<script>
+  // Initialize the Journey
+  document.addEventListener('DOMContentLoaded', function() {
+    const journey = new QuitJourney();
+  });
+</script>
