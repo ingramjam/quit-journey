@@ -331,6 +331,12 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .avatar-icon {
+    animation: pixelPulse 4s steps(4) infinite;
+  }
+}
+
 /* Vertical Path Line - 8-bit */
 .path-line {
   position: absolute;
@@ -1153,27 +1159,28 @@ body {
     top: 20px;
     left: 20px;
     transform: none;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     z-index: 150;
   }
   
   .avatar-icon {
-    border-width: 2px;
-    box-shadow: 3px 3px 0px #000;
+    border-width: 3px;
+    box-shadow: 4px 4px 0px #000;
   }
   
-  /* Show path line under cards on mobile */
+  /* Path line behind everything on mobile */
   .path-line {
     width: 2px;
     left: 50%;
-    z-index: 1;
+    z-index: 0;
   }
   
   /* Make sure cards are above the path */
   .milestone-card {
     position: relative;
     z-index: 10;
+    background: #0D1B2A;
   }
   
   /* Destination/form section */
