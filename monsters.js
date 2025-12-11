@@ -7,7 +7,7 @@ class MonsterEncounterSystem {
   constructor(journeyInstance) {
     this.journey = journeyInstance;
     this.monstersDefeated = 0;
-    this.encounterChance = 0.4; // 40% chance per milestone
+    this.encounterChance = 0.7; // 70% chance per milestone
     
     // Monster database
     this.monsters = [
@@ -58,6 +58,65 @@ class MonsterEncounterSystem {
         message: '"You have nothing better to do..."',
         trigger: 'Restless and bored...',
         linkedProducts: ['cigarettes', 'vapes', 'marijuana', 'nicotine-pouches']
+      },
+      {
+        name: 'Morning Ritual Demon',
+        sprite: '☕',
+        svgPath: 'assets/monster-cigarette.svg',
+        message: '"Coffee isn\'t the same without it..."',
+        trigger: 'Your morning routine feels incomplete...',
+        linkedProducts: ['cigarettes', 'vapes']
+      },
+      {
+        name: 'Party Monster',
+        sprite: '🎉',
+        svgPath: 'assets/monster-craving.svg',
+        message: '"Everyone\'s having fun except you..."',
+        trigger: 'At a party, everyone else is indulging...',
+        linkedProducts: ['cigarettes', 'vapes', 'marijuana']
+      },
+      {
+        name: 'Anxiety Specter',
+        sprite: '😱',
+        svgPath: 'assets/monster-stress.svg',
+        message: '"This will calm your nerves..."',
+        trigger: 'Anxious thoughts are racing...',
+        linkedProducts: ['cigarettes', 'vapes', 'marijuana']
+      },
+      {
+        name: 'Break Time Troll',
+        sprite: '⏰',
+        svgPath: 'assets/monster-cigarette.svg',
+        message: '"What else will you do on break?"',
+        trigger: 'Taking a work break feels empty...',
+        linkedProducts: ['cigarettes', 'vapes', 'nicotine-pouches']
+      },
+      {
+        name: 'Celebration Imp',
+        sprite: '🥳',
+        svgPath: 'assets/monster-craving.svg',
+        message: '"You deserve to celebrate!"',
+        trigger: 'Good news! Time to reward yourself...',
+        linkedProducts: ['cigarettes', 'vapes', 'marijuana']
+      },
+      {
+        name: 'Habit Haunter',
+        sprite: '👻',
+        svgPath: 'assets/monster-stress.svg',
+        message: '"Old habits die hard..."',
+        trigger: 'Your body remembers the routine...',
+        linkedProducts: ['cigarettes', 'vapes', 'marijuana', 'nicotine-pouches']
+      }
+        trigger: 'Friends are pressuring you...',
+        linkedProducts: ['cigarettes', 'vapes', 'marijuana']
+      },
+      {
+        name: 'Boredom Phantom',
+        sprite: '😑',
+        svgPath: 'assets/monster-craving.svg',
+        message: '"You have nothing better to do..."',
+        trigger: 'Restless and bored...',
+        linkedProducts: ['cigarettes', 'vapes', 'marijuana', 'nicotine-pouches']
       }
     ];
     
@@ -70,8 +129,6 @@ class MonsterEncounterSystem {
     
     // Hook into milestone system
     this.hookIntoMilestones();
-    
-    console.log('👾 Monster Encounter System activated');
   }
   
   addBackgroundMonsters() {
@@ -178,9 +235,6 @@ class MonsterEncounterSystem {
     giveInBtn.addEventListener('click', () => {
       this.handleBattleChoice('give-in', monster, encounter);
     });
-    
-    // Play encounter sound (if you want to add sound effects)
-    console.log(`👾 ${monster.name} appeared!`);
   }
   
   handleBattleChoice(choice, monster, encounterElement) {
@@ -211,8 +265,6 @@ class MonsterEncounterSystem {
         timestamp: new Date().toISOString()
       });
       
-      console.log(`⚔️ Defeated ${monster.name}! Total: ${this.monstersDefeated}`);
-      
     } else {
       // Gave in - show consequences
       const battle = encounterElement.querySelector('.monster-battle');
@@ -238,8 +290,6 @@ class MonsterEncounterSystem {
         resisted: false,
         timestamp: new Date().toISOString()
       });
-      
-      console.log(`💔 Gave in to ${monster.name}. Keep trying!`);
     }
   }
   
@@ -249,6 +299,110 @@ class MonsterEncounterSystem {
       encounterChance: this.encounterChance,
       totalMonsters: this.monsters.length
     };
+  }
+  
+  createStatsCard() {
+    const stats = this.journey.state;
+    const level = this.calculateLevel();
+    const defeatedList = stats.monstersDefeated || [];
+    const triggersEncountered = stats.triggersEncountered || [];
+    const totalEncounters = defeatedList.length + triggersEncountered.length;
+    const resistRate = totalEncounters > 0 ? Math.round((defeatedList.length / totalEncounters) * 100) : 0;
+    
+    const statsCard = document.createElement('div');
+    statsCard.className = 'stats-recap-card';
+    statsCard.innerHTML = `
+      <div class="stats-header">
+        <h2 class="stats-title">⭐ QUEST COMPLETE! ⭐</h2>
+        <div class="level-display">
+          <span class="level-badge">LVL ${level}</span>
+          <div class="level-title">${this.getLevelTitle(level)}</div>
+        </div>
+      </div>
+      
+      <div class="stats-body">
+        <div class="stat-row">
+          <span class="stat-label">👾 Monsters Defeated:</span>
+          <span class="stat-value">${defeatedList.length}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">⚔️ Battles Faced:</span>
+          <span class="stat-value">${totalEncounters}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">💪 Resist Rate:</span>
+          <span class="stat-value">${resistRate}%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">🎒 Products Selected:</span>
+          <span class="stat-value">${stats.products?.length || 0}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">🗺️ Milestones Answered:</span>
+          <span class="stat-value">${Object.keys(stats.answers || {}).length}</span>
+        </div>
+      </div>
+      
+      ${defeatedList.length > 0 ? `
+        <div class="defeated-monsters">
+          <h3 class="defeated-title">🏆 Defeated Enemies:</h3>
+          <div class="monster-badges">
+            ${defeatedList.map(m => `<span class="monster-badge">${m.monster}</span>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+      
+      <div class="stats-footer">
+        <p class="encouragement">${this.getEncouragementMessage(resistRate)}</p>
+        <button class="stats-close-btn" onclick="this.closest('.stats-recap-card').remove()">
+          ✨ CONTINUE ✨
+        </button>
+      </div>
+    `;
+    
+    return statsCard;
+  }
+  
+  calculateLevel() {
+    // Level based on monsters defeated + milestones completed
+    const defeatedCount = (this.journey.state.monstersDefeated || []).length;
+    const milestonesCount = Object.keys(this.journey.state.answers || {}).length;
+    const totalPoints = (defeatedCount * 10) + (milestonesCount * 5);
+    
+    if (totalPoints >= 100) return 10;
+    if (totalPoints >= 80) return 9;
+    if (totalPoints >= 60) return 8;
+    if (totalPoints >= 50) return 7;
+    if (totalPoints >= 40) return 6;
+    if (totalPoints >= 30) return 5;
+    if (totalPoints >= 20) return 4;
+    if (totalPoints >= 10) return 3;
+    if (totalPoints >= 5) return 2;
+    return 1;
+  }
+  
+  getLevelTitle(level) {
+    const titles = {
+      1: 'NOVICE WARRIOR',
+      2: 'APPRENTICE FIGHTER',
+      3: 'SKILLED DEFENDER',
+      4: 'BRAVE CHAMPION',
+      5: 'ELITE GUARDIAN',
+      6: 'MASTER SLAYER',
+      7: 'LEGENDARY HERO',
+      8: 'MYTHIC CONQUEROR',
+      9: 'DIVINE PROTECTOR',
+      10: 'ULTIMATE LEGEND'
+    };
+    return titles[level] || 'WARRIOR';
+  }
+  
+  getEncouragementMessage(resistRate) {
+    if (resistRate >= 90) return '🌟 INCREDIBLE! You\'re a true champion of willpower!';
+    if (resistRate >= 75) return '💪 AMAZING! Your strength is inspiring!';
+    if (resistRate >= 50) return '⚔️ STRONG WORK! You\'re building powerful resistance!';
+    if (resistRate >= 25) return '🛡️ GOOD START! Every battle makes you stronger!';
+    return '💚 BRAVE EFFORT! The journey continues, warrior!';
   }
 }
 

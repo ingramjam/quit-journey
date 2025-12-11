@@ -322,11 +322,28 @@
       journey = new QuitJourney();
       monsterSystem = new MonsterEncounterSystem(journey);
       
-      window.journeyInstance = journey; // Make accessible globally for debugging
+      window.journeyInstance = journey;
       window.monsterSystem = monsterSystem;
       
-      console.log('🎮 Pixel Demo loaded with Monster Encounters!');
-      console.log('💡 Try: monsterSystem.getStats() to see encounter stats');
+      // Hook into form submission to show stats card
+      const form = document.getElementById('quitJourneyForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Show success message briefly
+          const submitBtn = form.querySelector('.submit-btn');
+          submitBtn.textContent = '✅ QUEST SUBMITTED!';
+          submitBtn.style.borderColor = '#00FF00';
+          submitBtn.style.color = '#00FF00';
+          
+          // Show stats card after a moment
+          setTimeout(() => {
+            const statsCard = monsterSystem.createStatsCard();
+            document.body.appendChild(statsCard);
+          }, 800);
+        });
+      }
     });
   </script>
 
