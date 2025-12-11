@@ -107,17 +107,6 @@ class MonsterEncounterSystem {
         trigger: 'Your body remembers the routine...',
         linkedProducts: ['cigarettes', 'vapes', 'marijuana', 'nicotine-pouches']
       }
-        trigger: 'Friends are pressuring you...',
-        linkedProducts: ['cigarettes', 'vapes', 'marijuana']
-      },
-      {
-        name: 'Boredom Phantom',
-        sprite: '😑',
-        svgPath: 'assets/monster-craving.svg',
-        message: '"You have nothing better to do..."',
-        trigger: 'Restless and bored...',
-        linkedProducts: ['cigarettes', 'vapes', 'marijuana', 'nicotine-pouches']
-      }
     ];
     
     this.initMonsterSystem();

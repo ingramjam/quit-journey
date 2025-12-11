@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diagnostic Page</title>
+  <style>
+    body { 
+      font-family: monospace; 
+      padding: 20px; 
+      background: #000; 
+      color: #0f0; 
+    }
+    .pass { color: #0f0; }
+    .fail { color: #f00; }
+    .test { margin: 10px 0; padding: 10px; border: 1px solid #333; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Diagnostic Tests</h1>
+  <div id="results"></div>
+
+  <script src="demo-pixel.js"></script>
+  <script src="monsters.js"></script>
+  <script>
+    const results = document.getElementById('results');
+    
+    function test(name, condition, details = '') {
+      const div = document.createElement('div');
+      div.className = 'test ' + (condition ? 'pass' : 'fail');
+      div.innerHTML = `${condition ? '✅' : '❌'} ${name}${details ? '<br>' + details : ''}`;
+      results.appendChild(div);
+      console.log(`${condition ? '✅' : '❌'} ${name}`, details);
+      return condition;
+    }
+    
+    // Test 1: Scripts loaded
+    test('demo-pixel.js loaded', typeof QuitJourney !== 'undefined');
+    test('monsters.js loaded', typeof MonsterEncounterSystem !== 'undefined');
+    
+    // Test 2: Can create instances
+    let journey, monsterSystem;
+    try {
+      // Create minimal mock for testing
+      const mockForm = document.createElement('form');
+      mockForm.id = 'quitJourneyForm';
+      document.body.appendChild(mockForm);
+      
+      journey = new QuitJourney();
+      test('QuitJourney instantiated', !!journey);
+      test('Journey has state', !!journey.state);
+      
+      monsterSystem = new MonsterEncounterSystem(journey);
+      test('MonsterEncounterSystem instantiated', !!monsterSystem);
+      test('Monster system has monsters', monsterSystem.monsters && monsterSystem.monsters.length > 0, 
+        `Found ${monsterSystem.monsters ? monsterSystem.monsters.length : 0} monsters`);
+      test('Encounter chance set', monsterSystem.encounterChance > 0, 
+        `Chance: ${monsterSystem.encounterChance * 100}%`);
+      
+      // Test 3: Methods exist
+      test('hookIntoMilestones method exists', typeof monsterSystem.hookIntoMilestones === 'function');
+      test('triggerEncounter method exists', typeof monsterSystem.triggerEncounter === 'function');
+      test('showMonsterBattle method exists', typeof monsterSystem.showMonsterBattle === 'function');
+      test('createStatsCard method exists', typeof monsterSystem.createStatsCard === 'function');
+      
+      // Test 4: Try to create stats card
+      try {
+        journey.state.monstersDefeated = [{monster: 'Test Monster', timestamp: new Date()}];
+        journey.state.answers = {test: 'answer'};
+        journey.state.products = ['cigarettes'];
+        
+        const card = monsterSystem.createStatsCard();
+        test('Stats card created', !!card);
+        test('Stats card is HTMLElement', card instanceof HTMLElement);
+        test('Stats card has class', card.className === 'stats-recap-card');
+        
+        // Try to append it
+        document.body.appendChild(card);
+        test('Stats card appended to body', document.querySelector('.stats-recap-card') !== null);
+        
+      } catch(e) {
+        test('Stats card creation FAILED', false, e.message);
+      }
+      
+      // Test 5: Check for milestones
+      const milestones = document.querySelectorAll('.milestone');
+      test('Milestones found', milestones.length > 0, `Found ${milestones.length} milestones`);
+      
+    } catch(e) {
+      test('Initialization FAILED', false, e.message);
+      console.error('Full error:', e);
+    }
+    
+    console.log('='.repeat(50));
+    console.log('All tests complete. Check results above.');
+  </script>
+</body>
+</html>
