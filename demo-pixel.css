@@ -1147,9 +1147,15 @@ body {
     top: 6px;
   }
   
-  /* Hide avatar traveler on mobile during journey */
+  /* Reposition avatar traveler on mobile - move to top left */
   .avatar-traveler {
-    display: none !important;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    transform: none;
+    width: 40px;
+    height: 40px;
+    z-index: 150;
   }
   
   .avatar-icon {
@@ -1157,9 +1163,17 @@ body {
     box-shadow: 3px 3px 0px #000;
   }
   
-  /* Path line thinner */
+  /* Show path line under cards on mobile */
   .path-line {
     width: 2px;
+    left: 50%;
+    z-index: 1;
+  }
+  
+  /* Make sure cards are above the path */
+  .milestone-card {
+    position: relative;
+    z-index: 10;
   }
   
   /* Destination/form section */
