@@ -325,25 +325,24 @@
       window.journeyInstance = journey;
       window.monsterSystem = monsterSystem;
       
-      // Hook into form submission to show stats card
-      const form = document.getElementById('quitJourneyForm');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Show success message briefly
-          const submitBtn = form.querySelector('.submit-btn');
-          submitBtn.textContent = '✅ QUEST SUBMITTED!';
-          submitBtn.style.borderColor = '#00FF00';
-          submitBtn.style.color = '#00FF00';
-          
-          // Show stats card after a moment
-          setTimeout(() => {
-            const statsCard = monsterSystem.createStatsCard();
-            document.body.appendChild(statsCard);
-          }, 800);
-        });
-      }
+      console.log('🎮 Pixel Demo loaded! Monsters: ' + monsterSystem.monsters.length);
+      
+      // Override the success message to show stats card instead
+      journey.showSuccessMessage = function() {
+        const submitBtn = this.elements.form.querySelector('.submit-btn');
+        
+        submitBtn.textContent = '✅ QUEST SUBMITTED!';
+        submitBtn.style.background = '#0D1B2A';
+        submitBtn.style.borderColor = '#00FF00';
+        submitBtn.style.color = '#00FF00';
+        submitBtn.disabled = true;
+        
+        // Show stats card after a moment
+        setTimeout(() => {
+          const statsCard = monsterSystem.createStatsCard();
+          document.body.appendChild(statsCard);
+        }, 1000);
+      };
     });
   </script>
 

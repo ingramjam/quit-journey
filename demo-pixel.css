@@ -752,6 +752,17 @@ body {
   animation: pixelSlideDown 0.4s steps(4);
 }
 
+.stats-recap-card::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: -1;
+}
+
 @keyframes pixelSlideDown {
   from {
     opacity: 0;

@@ -152,21 +152,27 @@ class MonsterEncounterSystem {
     const milestones = document.querySelectorAll('.milestone');
     
     milestones.forEach((milestone, index) => {
+      // Clear any previous check markers on init
+      milestone.dataset.monsterChecked = 'false';
+      
       // Add event listener when milestone becomes visible
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting && !milestone.dataset.monsterChecked) {
+          if (entry.isIntersecting && milestone.dataset.monsterChecked !== 'true') {
             milestone.dataset.monsterChecked = 'true';
             
             // Random chance for monster encounter
-            if (Math.random() < this.encounterChance) {
+            const roll = Math.random();
+            console.log(`🎲 Monster roll for milestone: ${roll.toFixed(2)} (need < ${this.encounterChance})`);
+            
+            if (roll < this.encounterChance) {
               setTimeout(() => {
                 this.triggerEncounter(milestone);
-              }, 1000);
+              }, 800);
             }
           }
         });
-      }, { threshold: 0.5 });
+      }, { threshold: 0.3 });
       
       observer.observe(milestone);
     });
