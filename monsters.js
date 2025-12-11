@@ -150,6 +150,7 @@ class MonsterEncounterSystem {
   
   hookIntoMilestones() {
     const milestones = document.querySelectorAll('.milestone');
+    console.log(`🎯 Found ${milestones.length} milestones to monitor`);
     
     milestones.forEach((milestone, index) => {
       // Clear any previous check markers on init
@@ -158,17 +159,22 @@ class MonsterEncounterSystem {
       // Add event listener when milestone becomes visible
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+          console.log(`👁️ Milestone ${index} visible: ${entry.isIntersecting}, checked: ${milestone.dataset.monsterChecked}`);
+          
           if (entry.isIntersecting && milestone.dataset.monsterChecked !== 'true') {
             milestone.dataset.monsterChecked = 'true';
             
             // Random chance for monster encounter
             const roll = Math.random();
-            console.log(`🎲 Monster roll for milestone: ${roll.toFixed(2)} (need < ${this.encounterChance})`);
+            console.log(`🎲 Monster roll for milestone ${index}: ${roll.toFixed(2)} (need < ${this.encounterChance})`);
             
             if (roll < this.encounterChance) {
+              console.log('👾 SPAWNING MONSTER!');
               setTimeout(() => {
                 this.triggerEncounter(milestone);
               }, 800);
+            } else {
+              console.log('😌 No monster this time');
             }
           }
         });
@@ -179,28 +185,37 @@ class MonsterEncounterSystem {
   }
   
   triggerEncounter(nearMilestone) {
+    console.log('⚡ triggerEncounter called!');
+    
     // Filter monsters based on selected products
     const selectedProducts = this.journey.state.products;
+    console.log('🎒 Selected products:', selectedProducts);
+    
     let availableMonsters = this.monsters;
     
     if (selectedProducts.length > 0) {
       availableMonsters = this.monsters.filter(monster => 
         monster.linkedProducts.some(product => selectedProducts.includes(product))
       );
+      console.log(`🔍 Filtered to ${availableMonsters.length} relevant monsters`);
     }
     
     if (availableMonsters.length === 0) {
+      console.log('⚠️ No filtered monsters, using all');
       availableMonsters = this.monsters;
     }
     
     // Select random monster
     const monster = availableMonsters[Math.floor(Math.random() * availableMonsters.length)];
+    console.log('👾 Selected monster:', monster.name);
     
     // Create encounter overlay
     this.showMonsterBattle(monster, nearMilestone);
   }
   
   showMonsterBattle(monster, nearMilestone) {
+    console.log('⚔️ showMonsterBattle called for:', monster.name);
+    
     // Create encounter container
     const encounter = document.createElement('div');
     encounter.className = 'monster-encounter active';
@@ -210,6 +225,8 @@ class MonsterEncounterSystem {
     encounter.style.width = '100%';
     encounter.style.height = '100vh';
     encounter.style.background = 'rgba(0, 0, 0, 0.85)';
+    
+    console.log('🎨 Creating battle UI...');
     
     encounter.innerHTML = `
       <div class="monster-battle">

@@ -319,16 +319,25 @@
     let journey;
     let monsterSystem;
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('🚀 Starting initialization...');
+      
       journey = new QuitJourney();
+      console.log('✅ QuitJourney initialized');
+      
       monsterSystem = new MonsterEncounterSystem(journey);
+      console.log('✅ MonsterEncounterSystem initialized');
       
       window.journeyInstance = journey;
       window.monsterSystem = monsterSystem;
       
-      console.log('🎮 Pixel Demo loaded! Monsters: ' + monsterSystem.monsters.length);
+      console.log('🎮 Pixel Demo loaded! Monsters available: ' + monsterSystem.monsters.length);
+      console.log('📊 Encounter rate: ' + (monsterSystem.encounterChance * 100) + '%');
       
       // Override the success message to show stats card instead
+      const originalShowSuccess = journey.showSuccessMessage.bind(journey);
       journey.showSuccessMessage = function() {
+        console.log('🎯 Form submitted! Showing stats card...');
+        
         const submitBtn = this.elements.form.querySelector('.submit-btn');
         
         submitBtn.textContent = '✅ QUEST SUBMITTED!';
@@ -339,10 +348,15 @@
         
         // Show stats card after a moment
         setTimeout(() => {
+          console.log('🏆 Creating stats card...');
           const statsCard = monsterSystem.createStatsCard();
+          console.log('📋 Stats card created, appending to body...');
           document.body.appendChild(statsCard);
+          console.log('✨ Stats card should now be visible!');
         }, 1000);
       };
+      
+      console.log('✅ All systems ready! Start your journey!');
     });
   </script>
 

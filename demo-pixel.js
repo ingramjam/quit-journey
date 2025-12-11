@@ -391,8 +391,6 @@ class QuitJourney {
     // Log the complete state
     console.log('📊 Complete Journey State:', this.state);
     
-    // Show a browser alert
-    alert('🎉 Success! Your quit journey has been submitted.\n\nCheck the console (F12) to see all collected data.');
   }
 
   /**
