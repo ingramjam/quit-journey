@@ -1044,50 +1044,188 @@ body {
    RESPONSIVE DESIGN - 8-bit
    =================================== */
 @media (max-width: 768px) {
+  /* Typography scaling */
   .journey-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
   }
   
   .journey-subtitle {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
   }
   
+  /* Avatar section */
   .avatar-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
   }
   
+  .avatar-card {
+    padding: 1.5rem;
+  }
+  
+  /* Product selection */
   .section-title {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    line-height: 1.6;
   }
   
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.75rem;
+  }
+  
+  .product-btn {
+    padding: 1rem 0.5rem;
+    font-size: 0.5rem;
+  }
+  
+  .product-icon {
+    font-size: 1.5rem;
+  }
+  
+  /* Journey path - Critical mobile fixes */
+  .journey-section {
+    padding: 2rem 1rem;
+  }
+  
+  .milestones-container {
+    padding: 5vh 0.5rem;
+  }
+  
+  .milestone {
+    margin-bottom: 15vh;
   }
   
   .milestone-card {
     max-width: 100%;
-    padding: 1.5rem;
+    padding: 1.25rem;
+    box-shadow: 4px 4px 0px #000;
   }
   
+  /* Center all milestone cards on mobile */
   .milestone-left,
   .milestone-right {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
+  /* Hide connection dots on mobile */
   .milestone-left .milestone-card::before,
   .milestone-right .milestone-card::before {
-    left: -30px;
+    display: none;
   }
   
+  /* Mobile-optimized question styling */
+  .milestone-title {
+    font-size: 0.65rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  /* Stack options vertically on mobile */
+  .milestone-options {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .milestone-option {
+    padding: 1rem 1rem;
+    font-size: 0.5rem;
+    min-height: 60px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+  }
+  
+  .milestone-option::before {
+    font-size: 0.7rem;
+    left: 8px;
+    top: 8px;
+  }
+  
+  /* Avatar traveler smaller on mobile */
+  .avatar-traveler {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .avatar-icon {
+    border-width: 2px;
+    box-shadow: 3px 3px 0px #000;
+  }
+  
+  /* Path line thinner */
+  .path-line {
+    width: 2px;
+  }
+  
+  /* Destination/form section */
   .destination-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.5;
   }
   
   .journey-form {
-    padding: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .form-input,
+  .form-select {
+    font-size: 0.6rem;
+    padding: 0.75rem;
+  }
+  
+  .submit-btn,
+  .continue-btn {
+    font-size: 0.6rem;
+    padding: 0.75rem 2rem;
+  }
+
+  /* Monster battles on mobile */
+  .monster-card {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+  
+  .monster-sprite {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .monster-name {
+    font-size: 0.8rem;
+  }
+  
+  .monster-message {
+    font-size: 0.5rem;
+    line-height: 1.6;
+  }
+  
+  .battle-btn {
+    font-size: 0.5rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  /* Stats card mobile */
+  .stats-recap-card {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+  
+  .stats-title {
+    font-size: 0.9rem;
+  }
+  
+  .level-display {
+    font-size: 1.5rem;
+  }
+  
+  .stats-grid {
+    font-size: 0.6rem;
   }
 
   .demo-controls {
