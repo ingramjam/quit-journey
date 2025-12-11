@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Business professional -->
+  <!-- Body/Suit -->
+  <rect x="75" y="110" width="50" height="65" fill="#2C3E50" rx="5"/>
+  <!-- Shirt -->
+  <rect x="85" y="115" width="30" height="25" fill="#FFFFFF"/>
+  <!-- Tie -->
+  <polygon points="100,115 95,120 105,120 100,145" fill="#8B0000"/>
+  <!-- Head -->
+  <circle cx="100" cy="70" r="30" fill="#9370DB"/>
+  <!-- Eyes -->
+  <circle cx="90" cy="65" r="5" fill="#FFFFFF"/>
+  <circle cx="110" cy="65" r="5" fill="#FFFFFF"/>
+  <circle cx="91" cy="65" r="3" fill="#000"/>
+  <circle cx="111" cy="65" r="3" fill="#000"/>
+  <!-- Smile -->
+  <path d="M 85 78 Q 100 83 115 78" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Hair -->
+  <ellipse cx="100" cy="50" rx="32" ry="18" fill="#4B0082"/>
+  <!-- Briefcase -->
+  <rect x="135" y="130" width="25" height="20" fill="#654321" rx="3"/>
+  <rect x="143" y="125" width="9" height="8" fill="#8B4513"/>
+  <line x1="147.5" y1="125" x2="147.5" y2="135" stroke="#C0C0C0" stroke-width="2"/>
+  <!-- Coffee cup -->
+  <rect x="55" y="135" width="15" height="18" fill="#FFFFFF" rx="2"/>
+  <ellipse cx="62.5" cy="137" rx="8" ry="3" fill="#8B4513"/>
+  <path d="M 70 140 Q 77 140 77 145" stroke="#C0C0C0" stroke-width="2" fill="none"/>
+</svg>

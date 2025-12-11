@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Space traveler -->
+  <!-- Body/Suit -->
+  <ellipse cx="100" cy="140" rx="40" ry="50" fill="#4DB8E8"/>
+  <!-- Helmet glow -->
+  <circle cx="100" cy="70" r="40" fill="#E0F7FF" opacity="0.6"/>
+  <!-- Head -->
+  <circle cx="100" cy="70" r="35" fill="#87CEEB"/>
+  <!-- Big alien eyes -->
+  <ellipse cx="88" cy="70" rx="12" ry="16" fill="#000033"/>
+  <ellipse cx="112" cy="70" rx="12" ry="16" fill="#000033"/>
+  <ellipse cx="90" cy="68" rx="6" ry="8" fill="#FFFFFF"/>
+  <ellipse cx="114" cy="68" rx="6" ry="8" fill="#FFFFFF"/>
+  <!-- Antenna -->
+  <line x1="100" y1="35" x2="100" y2="20" stroke="#4DB8E8" stroke-width="3"/>
+  <circle cx="100" cy="18" r="5" fill="#FFD700"/>
+  <circle cx="100" cy="18" r="7" fill="none" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
+  <!-- Backpack jets -->
+  <rect x="70" y="120" width="12" height="30" fill="#2C3E50" rx="3"/>
+  <rect x="118" y="120" width="12" height="30" fill="#2C3E50" rx="3"/>
+  <!-- Flames -->
+  <ellipse cx="76" cy="152" rx="6" ry="10" fill="#FF6347" opacity="0.8"/>
+  <ellipse cx="124" cy="152" rx="6" ry="10" fill="#FF6347" opacity="0.8"/>
+  <!-- Control panel -->
+  <rect x="90" y="125" width="20" height="15" fill="#2C3E50" rx="2"/>
+  <circle cx="95" cy="132" r="2" fill="#00FF00"/>
+  <circle cx="100" cy="132" r="2" fill="#FFD700"/>
+  <circle cx="105" cy="132" r="2" fill="#FF0000"/>
+</svg>

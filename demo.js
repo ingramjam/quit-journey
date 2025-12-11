@@ -96,9 +96,15 @@ class QuitJourney {
     this.state.demographics = demographics;
 
     // Update avatar icon with selected avatar SVG
-    const avatarSvg = card.querySelector('.avatar-image').cloneNode(true);
-    this.elements.avatarIcon.innerHTML = '';
-    this.elements.avatarIcon.appendChild(avatarSvg);
+    const avatarImage = card.querySelector('.avatar-image');
+    if (avatarImage) {
+      const avatarIconImg = this.elements.avatarIcon.querySelector('img');
+      if (avatarIconImg) {
+        avatarIconImg.src = avatarImage.src;
+      } else {
+        this.elements.avatarIcon.innerHTML = `<img src="${avatarImage.src}" alt="Your Avatar" style="width: 100%; height: 100%;">`;
+      }
+    }
 
     // Auto-scroll to next section after a short delay
     setTimeout(() => {
@@ -432,12 +438,7 @@ class QuitJourney {
 
     // Reset avatar icon
     this.elements.avatarIcon.innerHTML = `
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="45" fill="#667eea"/>
-        <circle cx="35" cy="40" r="5" fill="#fff"/>
-        <circle cx="65" cy="40" r="5" fill="#fff"/>
-        <path d="M 30 65 Q 50 75 70 65" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-      </svg>
+      <img src="assets/avatar-warrior.svg" alt="Your Avatar" style="width: 100%; height: 100%;">
     `;
 
     // Filter milestones

@@ -106,6 +106,156 @@
       transform: translateY(-5px);
     }
 
+    /* Interactive Map Section */
+    .interactive-map {
+      padding: 6rem 2rem;
+      background: linear-gradient(to bottom, #e0f2f7 0%, #d9e7f1 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .map-container h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #667eea;
+    }
+
+    .map-container p {
+      font-size: 1.3rem;
+      color: #666;
+      margin-bottom: 4rem;
+    }
+
+    .journey-map {
+      position: relative;
+      height: 600px;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      padding: 3rem;
+      overflow: hidden;
+    }
+
+    /* Path line */
+    .path-svg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* Map stations */
+    .map-stations {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      z-index: 2;
+    }
+
+    .map-station {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: slideInStation 0.8s ease forwards;
+    }
+
+    .map-station:nth-child(even) {
+      flex-direction: row-reverse;
+      transform: translateX(50px);
+    }
+
+    .map-station:nth-child(1) { animation-delay: 0.2s; }
+    .map-station:nth-child(2) { animation-delay: 0.4s; }
+    .map-station:nth-child(3) { animation-delay: 0.6s; }
+    .map-station:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes slideInStation {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .station-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: white;
+      padding: 10px;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 4px solid transparent;
+    }
+
+    .station-avatar:hover {
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+      border-color: #667eea;
+    }
+
+    .station-avatar img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .station-content {
+      max-width: 400px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .station-content h3 {
+      color: #667eea;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .station-content p {
+      color: #666;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .station-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #4A90E2;
+      border: 4px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(74, 144, 226, 0.6);
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(74, 144, 226, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(74, 144, 226, 1);
+      }
+    }
+
     /* Features Section */
     .features {
       padding: 6rem 2rem;
@@ -266,6 +416,71 @@
       <div class="cta-buttons">
         <a href="demo.html" class="btn btn-primary">Try Live Demo</a>
         <a href="https://github.com/ingramjam/quit-journey" class="btn btn-secondary">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map Section -->
+  <section class="interactive-map">
+    <div class="map-container">
+      <h2>The Journey Experience</h2>
+      <p>Follow the path from avatar selection to successful submission</p>
+      
+      <div class="journey-map">
+        <!-- Vertical path line -->
+        <svg class="path-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 100" preserveAspectRatio="none">
+          <line x1="5" y1="0" x2="5" y2="100" stroke="#4A90E2" stroke-width="2" stroke-dasharray="10,10"/>
+        </svg>
+
+        <div class="map-stations">
+          <!-- Station 1: Avatar Selection -->
+          <div class="map-station">
+            <div class="station-avatar">
+              <img src="assets/avatar-warrior.svg" alt="Select Avatar">
+            </div>
+            <div class="station-content">
+              <h3>🎭 Choose Your Guide</h3>
+              <p>Users select an avatar that represents their journey, creating instant personal connection.</p>
+            </div>
+            <div class="station-dot"></div>
+          </div>
+
+          <!-- Station 2: Backpack Selection -->
+          <div class="map-station">
+            <div class="station-avatar">
+              <img src="assets/avatar-farmer.svg" alt="Pack Your Bag">
+            </div>
+            <div class="station-content">
+              <h3>🎒 Pack Your Backpack</h3>
+              <p>Multi-select products that dynamically adjust which questions appear on the journey.</p>
+            </div>
+            <div class="station-dot"></div>
+          </div>
+
+          <!-- Station 3: The Journey -->
+          <div class="map-station">
+            <div class="station-avatar">
+              <img src="assets/avatar-explorer.svg" alt="Walk the Path">
+            </div>
+            <div class="station-content">
+              <h3>🗺️ Walk the Path</h3>
+              <p>Scroll through a vertical timeline answering interactive action prompts along the way.</p>
+            </div>
+            <div class="station-dot"></div>
+          </div>
+
+          <!-- Station 4: Success -->
+          <div class="map-station">
+            <div class="station-avatar">
+              <img src="assets/avatar-spacetraveler.svg" alt="Reach the Summit">
+            </div>
+            <div class="station-content">
+              <h3>🏔️ Reach the Summit</h3>
+              <p>Complete the journey with a personalized form submission capturing all journey data.</p>
+            </div>
+            <div class="station-dot"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
