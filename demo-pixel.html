@@ -310,13 +310,23 @@
   </div>
 
   <!-- Include the JavaScript -->
+</html>
+  <!-- Include the JavaScript -->
   <script src="demo-pixel.js"></script>
+  <script src="monsters.js"></script>
   <script>
     // Initialize the Journey
     let journey;
+    let monsterSystem;
     document.addEventListener('DOMContentLoaded', function() {
       journey = new QuitJourney();
+      monsterSystem = new MonsterEncounterSystem(journey);
+      
       window.journeyInstance = journey; // Make accessible globally for debugging
+      window.monsterSystem = monsterSystem;
+      
+      console.log('🎮 Pixel Demo loaded with Monster Encounters!');
+      console.log('💡 Try: monsterSystem.getStats() to see encounter stats');
     });
   </script>
 

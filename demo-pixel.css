@@ -266,14 +266,27 @@ body {
 }
 
 /* ===================================
-   SECTION 3: THE JOURNEY (TIMELINE) - 8-bit Style
+   SECTION 3: THE JOURNEY (TIMELINE) - 8-bit RPG Style
    =================================== */
 .journey-path {
   min-height: 300vh;
-  background: #000;
+  background: #2d5016;
   padding: 0;
   display: block;
   border-top: 4px solid #415A77;
+  position: relative;
+  background-image: 
+    /* Water bodies */
+    radial-gradient(ellipse 200px 100px at 20% 30%, #1ca3ec 0%, #1ca3ec 40%, transparent 40%),
+    radial-gradient(ellipse 150px 80px at 80% 60%, #1ca3ec 0%, #1ca3ec 40%, transparent 40%),
+    /* Dirt paths */
+    linear-gradient(90deg, transparent 45%, #8b4513 45%, #8b4513 55%, transparent 55%),
+    /* Trees pattern */
+    repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(34, 85, 34, 0.3) 50px, rgba(34, 85, 34, 0.3) 100px),
+    /* Base grass tiles */
+    repeating-linear-gradient(0deg, #2d5016 0px, #2d5016 4px, #245010 4px, #245010 8px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 8px 8px;
+  image-rendering: pixelated;
 }
 
 /* Sticky Avatar - 8-bit */
@@ -564,6 +577,162 @@ body {
   border-right: 6px solid transparent;
   border-top: 6px solid #00FF00;
 }
+
+/* Monster Encounters - 8-bit RPG Style */
+.monster-encounter {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
+
+.monster-encounter.active {
+  opacity: 1;
+  pointer-events: all;
+  animation: pixelFlash 0.3s steps(3);
+}
+
+@keyframes pixelFlash {
+  0%, 100% { background: rgba(0, 0, 0, 0.8); }
+  50% { background: rgba(255, 0, 0, 0.3); }
+}
+
+.monster-battle {
+  background: #0D1B2A;
+  border: 4px solid #FF0000;
+  padding: 3rem;
+  max-width: 500px;
+  box-shadow: 12px 12px 0px #000;
+  text-align: center;
+  position: relative;
+  animation: pixelShake 0.5s steps(4) infinite;
+}
+
+@keyframes pixelShake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-4px, 0); }
+  50% { transform: translate(4px, 0); }
+  75% { transform: translate(0, -4px); }
+}
+
+.monster-sprite {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: pixelBounce 1s steps(4) infinite;
+  filter: drop-shadow(4px 4px 0px #000);
+}
+
+.monster-name {
+  font-size: 1rem;
+  color: #FF0000;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.monster-message {
+  font-size: 0.6rem;
+  color: #778DA9;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.monster-battle-options {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.battle-btn {
+  padding: 1.5rem 2.5rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+  border: 3px solid #415A77;
+  border-radius: 0;
+  cursor: pointer;
+  transition: none;
+  box-shadow: 6px 6px 0px #000;
+  letter-spacing: 2px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.battle-btn.resist {
+  background: #0D1B2A;
+  color: #00FF00;
+}
+
+.battle-btn.resist:hover {
+  border-color: #00FF00;
+  box-shadow: 8px 8px 0px #00FF00;
+  transform: translate(-2px, -2px);
+}
+
+.battle-btn.give-in {
+  background: #1B263B;
+  color: #FF6B6B;
+}
+
+.battle-btn.give-in:hover {
+  border-color: #FF6B6B;
+  box-shadow: 8px 8px 0px #FF6B6B;
+  transform: translate(-2px, -2px);
+}
+
+.battle-victory {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0D1B2A;
+  color: #FFD700;
+  padding: 1rem 2rem;
+  border: 3px solid #FFD700;
+  font-size: 0.7rem;
+  box-shadow: 6px 6px 0px #000;
+  letter-spacing: 2px;
+  animation: pixelVictory 1s steps(4);
+}
+
+@keyframes pixelVictory {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Monster sprites floating in background */
+.bg-monster {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatMonster 4s steps(8) infinite;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+@keyframes floatMonster {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-20px) translateX(10px); }
+  50% { transform: translateY(0) translateX(20px); }
+  75% { transform: translateY(20px) translateX(10px); }
+}
+
+.bg-monster:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.bg-monster:nth-child(2) { top: 40%; right: 15%; animation-delay: 1s; }
+.bg-monster:nth-child(3) { top: 60%; left: 20%; animation-delay: 2s; }
+.bg-monster:nth-child(4) { top: 80%; right: 10%; animation-delay: 3s; }
 
 /* ===================================
    SECTION 4: THE DESTINATION - 8-bit Style

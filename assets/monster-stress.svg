@@ -1,0 +1,32 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stress Monster Body -->
+  <rect x="16" y="16" width="32" height="32" fill="#7f8c8d"/>
+  
+  <!-- Spiky hair/stress lines -->
+  <rect x="12" y="12" width="4" height="8" fill="#95a5a6"/>
+  <rect x="20" y="8" width="4" height="12" fill="#95a5a6"/>
+  <rect x="28" y="12" width="4" height="8" fill="#95a5a6"/>
+  <rect x="36" y="8" width="4" height="12" fill="#95a5a6"/>
+  <rect x="44" y="12" width="4" height="8" fill="#95a5a6"/>
+  
+  <!-- Arms reaching out -->
+  <rect x="8" y="24" width="8" height="4" fill="#7f8c8d"/>
+  <rect x="4" y="28" width="4" height="4" fill="#7f8c8d"/>
+  <rect x="48" y="24" width="8" height="4" fill="#7f8c8d"/>
+  <rect x="56" y="28" width="4" height="4" fill="#7f8c8d"/>
+  
+  <!-- Stressed eyes -->
+  <rect x="22" y="24" width="4" height="6" fill="#2c3e50"/>
+  <rect x="38" y="24" width="4" height="6" fill="#2c3e50"/>
+  <rect x="24" y="26" width="2" height="2" fill="#e74c3c"/>
+  <rect x="40" y="26" width="2" height="2" fill="#e74c3c"/>
+  
+  <!-- Worried mouth -->
+  <rect x="26" y="36" width="12" height="2" fill="#34495e"/>
+  <rect x="24" y="38" width="2" height="2" fill="#34495e"/>
+  <rect x="38" y="38" width="2" height="2" fill="#34495e"/>
+  
+  <!-- Sweat drops -->
+  <rect x="18" y="32" width="2" height="4" fill="#3498db"/>
+  <rect x="44" y="32" width="2" height="4" fill="#3498db"/>
+</svg>
