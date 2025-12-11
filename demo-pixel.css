@@ -1,0 +1,803 @@
+/**
+ * Quit Journey - 8-Bit Pixel Demo Styles
+ * Retro gaming aesthetic with pixel fonts
+ */
+
+/* ===================================
+   RESET & BASE STYLES
+   =================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive, monospace;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.quit-journey-container {
+  color: #333;
+  background: #000;
+  overflow-x: hidden;
+}
+
+/* ===================================
+   SECTION LAYOUT
+   =================================== */
+.journey-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.section-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+/* ===================================
+   SECTION 1: AVATAR SELECTION
+   =================================== */
+#avatar-selection {
+  background: #0D1B2A;
+  color: #00FF00;
+  border-bottom: 5px solid #00FF00;
+}
+
+.journey-title {
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 4px 4px 0px #003300;
+  letter-spacing: 2px;
+}
+
+.journey-subtitle {
+  font-size: 0.7rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0.9;
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.avatar-card {
+  background: #1B263B;
+  border: 4px solid #415A77;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.1s steps(2);
+  box-shadow: 8px 8px 0px #000;
+  color: #E0E1DD;
+  position: relative;
+}
+
+.avatar-card::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px dashed transparent;
+  transition: all 0.1s;
+}
+
+.avatar-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px #000;
+  border-color: #00FF00;
+}
+
+.avatar-card:hover::before {
+  border-color: #00FF00;
+  animation: pixel-dash 0.5s linear infinite;
+}
+
+@keyframes pixel-dash {
+  to {
+    border-image: repeating-linear-gradient(90deg, #00FF00 0, #00FF00 10px, transparent 10px, transparent 20px) 1;
+  }
+}
+
+.avatar-card.selected {
+  border: 4px solid #FFD700;
+  box-shadow: 0 0 0 4px #FFD700, 8px 8px 0px #000;
+  animation: pixel-blink 1s step-end infinite;
+}
+
+@keyframes pixel-blink {
+  50% { border-color: #FFF; }
+}
+
+.avatar-image-wrapper {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #415A77;
+  image-rendering: pixelated;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+.avatar-name {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #00FF00;
+  letter-spacing: 2px;
+}
+
+.avatar-description {
+  font-size: 0.5rem;
+  color: #778DA9;
+  line-height: 1.8;
+}
+
+/* ===================================
+   SECTION 2: THE BACKPACK - 8-bit Style
+   =================================== */
+#backpack-selection {
+  background: #000;
+  color: #00FF00;
+  border-top: 4px solid #415A77;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 4px 4px 0px #000;
+  letter-spacing: 3px;
+  color: #00FF00;
+}
+
+.section-description {
+  font-size: 0.7rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #778DA9;
+  line-height: 1.8;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.product-btn {
+  background: #0D1B2A;
+  border: 4px solid #415A77;
+  border-radius: 0;
+  padding: 2rem 1rem;
+  cursor: pointer;
+  transition: none;
+  box-shadow: 6px 6px 0px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #00FF00;
+  position: relative;
+}
+
+.product-btn:hover {
+  border-color: #00FF00;
+  box-shadow: 8px 8px 0px #00FF00;
+  transform: translate(-2px, -2px);
+}
+
+.product-btn.selected {
+  border-color: #FFD700;
+  background: #1B263B;
+  box-shadow: 8px 8px 0px #FFD700;
+  animation: pixel-blink 0.8s steps(2) infinite;
+}
+
+.product-icon {
+  font-size: 2.5rem;
+  image-rendering: pixelated;
+}
+
+.product-name {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
+
+.continue-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 1rem 3rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #00FF00;
+  background: #0D1B2A;
+  border: 4px solid #415A77;
+  border-radius: 0;
+  cursor: pointer;
+  transition: none;
+  box-shadow: 6px 6px 0px #000;
+  letter-spacing: 2px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.continue-btn:hover:not(:disabled) {
+  border-color: #00FF00;
+  box-shadow: 8px 8px 0px #00FF00;
+  transform: translate(-2px, -2px);
+}
+
+.continue-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #333;
+}
+
+/* ===================================
+   SECTION 3: THE JOURNEY (TIMELINE) - 8-bit Style
+   =================================== */
+.journey-path {
+  min-height: 300vh;
+  background: #000;
+  padding: 0;
+  display: block;
+  border-top: 4px solid #415A77;
+}
+
+/* Sticky Avatar - 8-bit */
+.avatar-traveler {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 80px;
+  height: 80px;
+  transition: none;
+  opacity: 0;
+  image-rendering: pixelated;
+}
+
+.avatar-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: 4px 4px 0px #000;
+  border: 3px solid #415A77;
+  animation: pixelPulse 2s steps(4) infinite;
+  background: #0D1B2A;
+  overflow: hidden;
+}
+
+.avatar-icon svg {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
+@keyframes pixelPulse {
+  0%, 100% {
+    box-shadow: 4px 4px 0px #000;
+    border-color: #415A77;
+  }
+  50% {
+    box-shadow: 6px 6px 0px #00FF00;
+    border-color: #00FF00;
+  }
+}
+
+/* Vertical Path Line - 8-bit */
+.path-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  z-index: 1;
+  background: repeating-linear-gradient(
+    to bottom,
+    #415A77 0px,
+    #415A77 10px,
+    transparent 10px,
+    transparent 20px
+  );
+}
+
+/* Milestones Container - 8-bit */
+.milestones-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10vh 2rem;
+}
+
+.milestone {
+  margin-bottom: 30vh;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: none;
+}
+
+.milestone.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: pixelSlideIn 0.3s steps(3);
+}
+
+@keyframes pixelSlideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.milestone.hidden {
+  display: none;
+}
+
+.milestone-card {
+  background: #0D1B2A;
+  border-radius: 0;
+  padding: 2.5rem;
+  box-shadow: 8px 8px 0px #000;
+  max-width: 500px;
+  position: relative;
+  border: 4px solid #415A77;
+}
+
+/* Alternating left and right */
+.milestone-left {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.milestone-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Connection dot - 8-bit */
+.milestone-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  background: #00FF00;
+  border: 3px solid #415A77;
+  border-radius: 0;
+  box-shadow: 3px 3px 0px #000;
+  transform: translateY(-50%);
+}
+
+.milestone-left .milestone-card::before {
+  right: -60px;
+}
+
+.milestone-right .milestone-card::before {
+  left: -60px;
+}
+
+.milestone-title {
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  color: #00FF00;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.8;
+  letter-spacing: 2px;
+}
+
+.milestone-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.milestone-option {
+  position: relative;
+  padding: 2rem 1.5rem;
+  border: 3px solid #415A77;
+  border-radius: 0;
+  background: #1B263B;
+  cursor: pointer;
+  font-size: 0.6rem;
+  transition: none;
+  text-align: center;
+  font-weight: 400;
+  color: #778DA9;
+  box-shadow: 4px 4px 0px #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.milestone-option::before {
+  content: '►';
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 1rem;
+  opacity: 0;
+  transition: none;
+  color: #00FF00;
+}
+
+.milestone-option:hover {
+  border-color: #00FF00;
+  background: #0D1B2A;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #00FF00;
+  color: #00FF00;
+}
+
+.milestone-option:hover::before {
+  opacity: 1;
+  animation: pixelBounce 0.8s steps(4) infinite;
+}
+
+@keyframes pixelBounce {
+  0%, 100% { left: 10px; }
+  50% { left: 15px; }
+}
+
+.milestone-option.selected {
+  background: #1B263B;
+  color: #FFD700;
+  border-color: #FFD700;
+  box-shadow: 6px 6px 0px #FFD700;
+  animation: pixel-blink 0.8s steps(2) infinite;
+}
+
+.milestone-option.selected::before {
+  content: '✓';
+  opacity: 1;
+  left: 10px;
+  color: #FFD700;
+  font-size: 1.2rem;
+  animation: none;
+}
+
+.milestone-option.selected::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 0;
+  border: 2px dashed #FFD700;
+  animation: pixelDash 1s linear infinite;
+}
+
+@keyframes pixelDash {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 20; }
+}
+
+/* Confirmation Popup - 8-bit */
+.confirmation-popup {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px) scale(0.8);
+  background: #0D1B2A;
+  color: #00FF00;
+  padding: 1rem 2rem;
+  border-radius: 0;
+  border: 3px solid #00FF00;
+  font-weight: 400;
+  font-size: 0.6rem;
+  box-shadow: 6px 6px 0px #000;
+  opacity: 0;
+  transition: none;
+  z-index: 1000;
+  letter-spacing: 2px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.confirmation-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+  animation: pixelPop 0.2s steps(2);
+}
+
+@keyframes pixelPop {
+  0% {
+    transform: translateX(-50%) translateY(20px) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.confirmation-popup::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #00FF00;
+}
+
+/* ===================================
+   SECTION 4: THE DESTINATION - 8-bit Style
+   =================================== */
+#destination {
+  background: #000;
+  color: #00FF00;
+  min-height: 100vh;
+  border-top: 4px solid #415A77;
+}
+
+.destination-visual {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.destination-title {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-shadow: 4px 4px 0px #000;
+  letter-spacing: 3px;
+}
+
+.destination-subtitle {
+  font-size: 0.7rem;
+  color: #778DA9;
+  line-height: 1.8;
+}
+
+.journey-form {
+  background: #0D1B2A;
+  border-radius: 0;
+  border: 4px solid #415A77;
+  padding: 3rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  box-shadow: 8px 8px 0px #000;
+  color: #00FF00;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+  color: #00FF00;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 3px solid #415A77;
+  border-radius: 0;
+  background: #1B263B;
+  color: #00FF00;
+  font-size: 0.7rem;
+  font-family: 'Press Start 2P', cursive;
+  transition: none;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #00FF00;
+  box-shadow: 4px 4px 0px #00FF00;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #00FF00;
+  background: #0D1B2A;
+  border: 4px solid #415A77;
+  border-radius: 0;
+  cursor: pointer;
+  transition: none;
+  box-shadow: 6px 6px 0px #000;
+  margin-top: 1rem;
+  letter-spacing: 2px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.submit-btn:hover:not(:disabled) {
+  border-color: #00FF00;
+  box-shadow: 8px 8px 0px #00FF00;
+  transform: translate(-2px, -2px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #333;
+}
+
+/* Demo Controls - 8-bit */
+.demo-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.demo-btn {
+  padding: 1rem 2rem;
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: #00FF00;
+  background: #0D1B2A;
+  border: 3px solid #415A77;
+  border-radius: 0;
+  cursor: pointer;
+  transition: none;
+  letter-spacing: 2px;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 4px 4px 0px #000;
+}
+
+.demo-btn:hover {
+  border-color: #00FF00;
+  box-shadow: 6px 6px 0px #00FF00;
+  transform: translate(-2px, -2px);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN - 8-bit
+   =================================== */
+@media (max-width: 768px) {
+  .journey-title {
+    font-size: 1.2rem;
+  }
+  
+  .journey-subtitle {
+    font-size: 0.6rem;
+  }
+  
+  .avatar-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1rem;
+  }
+  
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .milestone-card {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .milestone-left,
+  .milestone-right {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .milestone-left .milestone-card::before,
+  .milestone-right .milestone-card::before {
+    left: -30px;
+  }
+  
+  .destination-title {
+    font-size: 1.2rem;
+  }
+  
+  .journey-form {
+    padding: 2rem;
+  }
+
+  .demo-controls {
+    flex-direction: column;
+  }
+}
+
+/* ===================================
+   SMOOTH SCROLL BEHAVIOR - Removed for 8-bit
+   =================================== */
+html {
+  scroll-behavior: auto;
+}
+
+/* ===================================
+   ANIMATION UTILITIES - 8-bit Style
+   =================================== */
+.fade-in {
+  animation: pixelFadeIn 0.3s steps(3);
+}
+
+@keyframes pixelFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  animation: pixelSlideLeft 0.4s steps(4);
+}
+
+@keyframes pixelSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: pixelSlideRight 0.4s steps(4);
+}
+
+@keyframes pixelSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

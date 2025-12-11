@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <!-- 8-bit Warrior -->
+  <!-- Helmet -->
+  <rect x="40" y="30" width="80" height="10" fill="#4A4A4A"/>
+  <rect x="30" y="40" width="100" height="10" fill="#696969"/>
+  <!-- Horns -->
+  <rect x="20" y="30" width="10" height="20" fill="#8B4513"/>
+  <rect x="130" y="30" width="10" height="20" fill="#8B4513"/>
+  <!-- Head -->
+  <rect x="40" y="50" width="80" height="40" fill="#2D8B3E"/>
+  <!-- Eyes -->
+  <rect x="55" y="60" width="15" height="15" fill="#FFD700"/>
+  <rect x="90" y="60" width="15" height="15" fill="#FFD700"/>
+  <!-- Body/Armor -->
+  <rect x="50" y="90" width="60" height="10" fill="#8B0000"/>
+  <rect x="40" y="100" width="80" height="30" fill="#4A4A4A"/>
+  <rect x="50" y="105" width="60" height="5" fill="#696969"/>
+  <rect x="50" y="115" width="60" height="5" fill="#696969"/>
+  <!-- Arms -->
+  <rect x="20" y="100" width="20" height="40" fill="#2D8B3E"/>
+  <rect x="120" y="100" width="20" height="40" fill="#2D8B3E"/>
+  <!-- Shield -->
+  <rect x="15" y="105" width="15" height="25" fill="#C0C0C0"/>
+  <rect x="18" y="110" width="9" height="15" fill="#FFD700"/>
+  <!-- Sword -->
+  <rect x="130" y="90" width="5" height="40" fill="#C0C0C0"/>
+  <rect x="125" y="85" width="15" height="8" fill="#8B4513"/>
+  <!-- Legs -->
+  <rect x="55" y="130" width="20" height="30" fill="#4A4A4A"/>
+  <rect x="85" y="130" width="20" height="30" fill="#4A4A4A"/>
+</svg>

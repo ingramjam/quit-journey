@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <!-- 8-bit Explorer -->
+  <!-- Safari Hat -->
+  <rect x="35" y="25" width="90" height="5" fill="#8B7355"/>
+  <rect x="50" y="30" width="60" height="20" fill="#A0826D"/>
+  <!-- Head -->
+  <rect x="55" y="50" width="50" height="35" fill="#3CB371"/>
+  <!-- Eyes -->
+  <rect x="65" y="60" width="10" height="10" fill="#000000"/>
+  <rect x="85" y="60" width="10" height="10" fill="#000000"/>
+  <!-- Smile -->
+  <rect x="70" y="75" width="20" height="5" fill="#000000"/>
+  <!-- Body -->
+  <rect x="50" y="85" width="60" height="45" fill="#6B8E23"/>
+  <!-- Belt -->
+  <rect x="45" y="105" width="70" height="8" fill="#8B4513"/>
+  <!-- Compass on chest -->
+  <rect x="75" y="95" width="10" height="10" fill="#FFD700"/>
+  <rect x="78" y="98" width="4" height="4" fill="#FF0000"/>
+  <!-- Arms -->
+  <rect x="30" y="95" width="20" height="30" fill="#3CB371"/>
+  <rect x="110" y="95" width="20" height="30" fill="#3CB371"/>
+  <!-- Backpack -->
+  <rect x="25" y="90" width="25" height="30" fill="#8B4513"/>
+  <rect x="30" y="95" width="15" height="10" fill="#D2691E"/>
+  <!-- Binoculars -->
+  <rect x="120" y="100" width="10" height="15" fill="#4A4A4A"/>
+  <rect x="135" y="100" width="10" height="15" fill="#4A4A4A"/>
+  <rect x="125" y="105" width="15" height="5" fill="#2F4F4F"/>
+  <!-- Legs -->
+  <rect x="60" y="130" width="15" height="30" fill="#8B7355"/>
+  <rect x="85" y="130" width="15" height="30" fill="#8B7355"/>
+</svg>

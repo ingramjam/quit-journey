@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <!-- 8-bit Farmer -->
+  <!-- Straw Hat -->
+  <rect x="30" y="25" width="100" height="5" fill="#DEB887"/>
+  <rect x="50" y="30" width="60" height="15" fill="#D2B48C"/>
+  <!-- Head -->
+  <rect x="55" y="45" width="50" height="40" fill="#3CB371"/>
+  <!-- Eyes -->
+  <rect x="65" y="55" width="10" height="10" fill="#000000"/>
+  <rect x="85" y="55" width="10" height="10" fill="#000000"/>
+  <!-- Smile -->
+  <rect x="65" y="70" width="10" height="5" fill="#000000"/>
+  <rect x="85" y="70" width="10" height="5" fill="#000000"/>
+  <rect x="75" y="75" width="10" height="5" fill="#000000"/>
+  <!-- Body/Overalls -->
+  <rect x="50" y="85" width="60" height="50" fill="#4169E1"/>
+  <!-- Overalls straps -->
+  <rect x="60" y="85" width="10" height="20" fill="#FF6347"/>
+  <rect x="90" y="85" width="10" height="20" fill="#FF6347"/>
+  <!-- Arms -->
+  <rect x="30" y="95" width="20" height="30" fill="#3CB371"/>
+  <rect x="110" y="95" width="20" height="30" fill="#3CB371"/>
+  <!-- Pitchfork -->
+  <rect x="120" y="90" width="5" height="50" fill="#8B4513"/>
+  <rect x="115" y="85" width="5" height="15" fill="#C0C0C0"/>
+  <rect x="125" y="85" width="5" height="15" fill="#C0C0C0"/>
+  <rect x="135" y="85" width="5" height="15" fill="#C0C0C0"/>
+  <!-- Basket -->
+  <rect x="15" y="100" width="20" height="15" fill="#8B4513"/>
+  <!-- Legs -->
+  <rect x="60" y="135" width="15" height="25" fill="#4169E1"/>
+  <rect x="85" y="135" width="15" height="25" fill="#4169E1"/>
+</svg>
