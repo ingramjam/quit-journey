@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quit Journey - 8-Bit TEST</title>
+  <link rel="stylesheet" href="demo-pixel.css?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="quit-journey-container" id="quitJourney">
+    
+    <!-- Quick Test Form -->
+    <section class="journey-section" id="destination" style="min-height: 100vh;">
+      <div class="section-content">
+        <div class="destination-visual">
+          <h1 class="destination-title">🏔️ TEST FORM 🏔️</h1>
+          <p class="destination-subtitle">Testing stats card and monster system</p>
+        </div>
+
+        <form id="quitJourneyForm" class="journey-form">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" required value="Test">
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" name="lastName" required value="User">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required value="test@test.com">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" value="1234567890">
+          </div>
+
+          <button type="submit" class="submit-btn">Start Your Quit Journey</button>
+        </form>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Include the JavaScript with cache busting -->
+  <script src="demo-pixel.js?v=2"></script>
+  <script src="monsters.js?v=2"></script>
+  <script>
+    // TESTING VERSION - Simplified initialization
+    let journey;
+    let monsterSystem;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🧪 TEST MODE - Starting initialization...');
+      
+      // Create mock journey object for testing
+      journey = {
+        state: {
+          selectedAvatar: 'warrior',
+          demographics: {},
+          products: ['cigarettes', 'vapes'],
+          progress: 100,
+          answers: {
+            'time': 'Less than a year',
+            'reason': 'My health',
+            'attempts': 'First time'
+          },
+          monstersDefeated: [
+            { monster: 'Cigarette Demon', timestamp: new Date().toISOString() },
+            { monster: 'Stress Goblin', timestamp: new Date().toISOString() },
+            { monster: 'Craving Beast', timestamp: new Date().toISOString() }
+          ],
+          triggersEncountered: [
+            { monster: 'Vape Wraith', resisted: false, timestamp: new Date().toISOString() }
+          ]
+        },
+        elements: {
+          form: document.getElementById('quitJourneyForm')
+        }
+      };
+      
+      console.log('✅ Mock journey created');
+      console.log('📊 Mock state:', journey.state);
+      
+      monsterSystem = new MonsterEncounterSystem(journey);
+      console.log('✅ MonsterEncounterSystem initialized');
+      console.log('🎮 Monsters available: ' + monsterSystem.monsters.length);
+      
+      // Test stats card directly
+      window.testStatsCard = function() {
+        console.log('🧪 Manual stats card test...');
+        const statsCard = monsterSystem.createStatsCard();
+        document.body.appendChild(statsCard);
+        console.log('✅ Stats card appended!');
+      };
+      
+      // Handle form submission
+      const form = document.getElementById('quitJourneyForm');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        console.log('🎯 TEST FORM SUBMITTED!');
+        
+        const submitBtn = form.querySelector('.submit-btn');
+        submitBtn.textContent = '✅ QUEST SUBMITTED!';
+        submitBtn.style.background = '#0D1B2A';
+        submitBtn.style.borderColor = '#00FF00';
+        submitBtn.style.color = '#00FF00';
+        submitBtn.disabled = true;
+        
+        // Show stats card
+        setTimeout(() => {
+          console.log('🏆 Creating stats card...');
+          const statsCard = monsterSystem.createStatsCard();
+          console.log('📋 Stats card HTML:', statsCard.outerHTML.substring(0, 200));
+          document.body.appendChild(statsCard);
+          console.log('✨ Stats card appended to body!');
+        }, 1000);
+      });
+      
+      console.log('✅ TEST MODE READY!');
+      console.log('💡 Type testStatsCard() in console to manually trigger stats card');
+    });
+  </script>
+
+</body>
+</html>
